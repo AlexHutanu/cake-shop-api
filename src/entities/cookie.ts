@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
 
 @Entity({ name: "cookies"})
-export class Cookies {
+export class Cookie {
     @PrimaryGeneratedColumn()
     id: number
     @Column()
