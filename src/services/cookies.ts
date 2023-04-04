@@ -16,3 +16,9 @@ export const updateCookie = async (cookie: Cookie): Promise<Cookie> => {
     return await cookieRepository.save(cookie)
 }
 
+export const deleteCookie = async (cookieId: number): Promise<Cookie> => {
+    return await cookieRepository.findOne({where: {id: cookieId}})
+}
+
+
+
