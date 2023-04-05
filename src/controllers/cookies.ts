@@ -1,7 +1,13 @@
 import {Request, Response} from 'express';
 import {Cookie} from "../entities/cookie";
-import {createCookie, deleteCookie, getCookieById, updateCookie} from "../services/cookies";
+import {createCookie, deleteCookie, getCookieById, getCookies, updateCookie} from "../services/cookies";
 
+
+
+export const getCookiesController = async (req: Request, res: Response) => {
+    const cookies: Cookie[] = await getCookies()
+    res.status(200).json(cookies)
+}
 
 export const getCookieByIdController = async (req: Request, res: Response) => {
     const cookie: Cookie = await getCookieById(req.body.id)
@@ -9,7 +15,7 @@ export const getCookieByIdController = async (req: Request, res: Response) => {
 }
 
 export const deleteCookieController = async (req: Request, res: Response) => {
-    const cookie: Cookie = await deleteCookie(req.body.id)
+    await deleteCookie(req.body.id)
     res.status(200)
 }
 export const createCookieController = async (req: Request, res: Response) => {

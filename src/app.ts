@@ -1,8 +1,8 @@
 import express from 'express'
 import bodyParser from "body-parser";
 import 'reflect-metadata';
+import cookieRoutes from './routes/cookie'
 import {typeOrmContext} from "./db/type-orm.context";
-require('dotenv').config();
 
 
 const app = express()
@@ -16,13 +16,10 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use('/cookies', cookieRoutes)
+
 const boostrap = async () => {
     try {
-        console.log(process.env.DB_HOST)
-        console.log(process.env.DB_DATABASE)
-        console.log(process.env.DB_PORT)
-        console.log(process.env.DB_PASSWORD)
-        console.log(process.env.DB_USER)
         await typeOrmContext.initialize()
         console.log('Database connected')
         app.listen(PORT, () => {

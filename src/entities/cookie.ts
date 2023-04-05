@@ -1,6 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
 
-@Entity({ name: "cookies"})
+@Entity()
 export class Cookie {
     @PrimaryGeneratedColumn()
     id: number
@@ -11,7 +11,7 @@ export class Cookie {
     @Column()
     image: string
     @Column()
-    composition: string[]
+    composition: string
     @Column()
     recommendation: string
     @Column()
